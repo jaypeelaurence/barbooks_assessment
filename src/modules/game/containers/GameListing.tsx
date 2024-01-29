@@ -1,16 +1,16 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useMemo } from 'react';
 
 import { useQueryParams } from 'hooks';
 import { FilterForm } from 'ui/components/forms';
 import { useGetGames } from 'modules/game/hooks';
 import { PLATFORM, SORT_BY } from 'utils/constants';
 import { GameFilterForm } from 'modules/game/forms';
-import { debounce } from 'lodash';
 import { removeEmpty } from 'utils/helpers';
 import { useFilterContext } from 'modules/game/utils/providers/Filter';
-import { Header } from 'ui/partials';
+import style from 'assets/styles/style.module.scss';
 
 import { GameCard } from '../components';
+import { Games } from '../utils/types';
 
 export interface GAME_FILTER {
   platform?: PLATFORM,
@@ -23,7 +23,7 @@ export interface GAME_FILTER {
 const INIT_FILTERS: GAME_FILTER = {};
 
 const SkeletonLoading: FC = () => (
-  <div>
+  <div className={style.gameListing}>
     <GameCard isLoading={true} />
     <GameCard isLoading={true} />
     <GameCard isLoading={true} />
@@ -36,7 +36,7 @@ const SkeletonLoading: FC = () => (
     <GameCard isLoading={true} />
     <GameCard isLoading={true} />
   </div>
-)
+);
 
 const GameListing: FC = () => {
   const { state, dispatch } = useFilterContext();
@@ -51,12 +51,15 @@ const GameListing: FC = () => {
     dispatch?.({ payload });
   }, [_setQuery, dispatch]);
 
-  const handleOnChange = useCallback((value: Record<string, any>) => {
-    if (value?.title) {
-      debounce(() => setQuery({ ...query, ...value }), 1000)()
+  const games: Games[] = useMemo(() => {
+    if (!query?.title) return data as Games[];
+  
+    return data?.filter(({ title }) => 
+      title.toLowerCase().includes(String(query?.title).toLowerCase())) as Games[];
+  }, [data, query?.title]);
 
-      return;
-    } else value.title = null;
+  const handleOnChange = useCallback((value: Record<string, any>) => {
+    if (!value?.title) value.title = null;
     
     if (parseInt(value?.platform) === 0) value.platform = null;
     
@@ -67,21 +70,22 @@ const GameListing: FC = () => {
     setQuery(removeEmpty({ ...query, ...value }));
   }, [query, setQuery]);
 
+  console.log(state, query);
+
   return (
     <div>
-      <Header />
       <FilterForm initialValues={query ?? INIT_FILTERS} onChange={handleOnChange}>
         {({ values, handleChange }) => (
           <GameFilterForm values={values} handleChange={handleChange} />
         )}
       </FilterForm>
-      {isLoading ? <SkeletonLoading /> : (
-        data?.map((game) => (
+      <div className={style.gameListing}>   
+        {isLoading ? <SkeletonLoading /> : (games?.map((game) => (
           <GameCard key={game?.id} data={game} isLoading={isLoading} />
-        ))
-      )}
+        )))}
+      </div>
     </div>
-  )
+  );
 };
 
 export default GameListing;

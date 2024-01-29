@@ -1,3 +1,4 @@
-import FilterForm from './FilterForm';
+import FilterForm from './Filter.form';
+import Select from './Select';
 
-export { FilterForm };
+export { Select, FilterForm };

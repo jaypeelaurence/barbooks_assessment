@@ -1,0 +1,28 @@
+.gameCard {
+  width: calc(50% - 22px);
+  margin: 10px;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: $secondary;
+  border-style: solid;
+
+  > div {
+    padding: 20px;
+
+    h1 {
+      text-align: center;
+    }
+      
+    * {
+      margin: 15px 0px;
+    }
+
+    *:first-child {
+      margin-top: 0px;
+    }
+
+    *:last-child {
+      margin-bottom: 0px;
+    }
+  }
+}

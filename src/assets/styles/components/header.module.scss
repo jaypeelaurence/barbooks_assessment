@@ -1,0 +1,16 @@
+.header {
+  padding: 20px;
+  text-align: center;
+
+  * {
+    padding: 15px 0px;
+  }
+
+  *:first-child {
+    padding-top: 0px;
+  }
+
+  *:last-child {
+    padding-bottom: 0px;
+  }
+}

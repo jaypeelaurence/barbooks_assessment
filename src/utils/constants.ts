@@ -2,15 +2,15 @@ const ENUM_TOAST_TYPE = ['success', 'error', 'info', 'warning', 'default'];
 
 export type TOAST_TYPE = (typeof ENUM_TOAST_TYPE)[number];
 
-const ENUM_ERROR_STATUS_CODES = [400, 401, 403, 404, 422, 429, 500];
+const ENUM_ERROR_STATUS_CODES: number[] = [400, 401, 403, 404, 422, 429, 500];
 
 export type ERROR_STATUS_CODES = (typeof ENUM_ERROR_STATUS_CODES)[number];
 
-const ENUM_SORT_BY = ['release-date', 'alphabetical', 'relevance'];
+const ENUM_SORT_BY: string[] = ['release-date', 'alphabetical', 'relevance'];
 
 export type SORT_BY = (typeof ENUM_SORT_BY)[number];
 
-const ENUM_CATEGORIES = [
+const ENUM_CATEGORIES: string[] = [
   'mmorpg',
   'shooter',
   'strategy',
@@ -60,7 +60,7 @@ const ENUM_CATEGORIES = [
 
 export type CATEGORIES = (typeof ENUM_CATEGORIES)[number];
 
-const ENUM_PLATFORM = [
+const ENUM_PLATFORM: { label: string, value: string }[] = [
   {
     label: 'PC (Windows)',
     value: 'pc',
@@ -71,7 +71,7 @@ const ENUM_PLATFORM = [
   },
 ]
 
-const PLATFORM =
+const PLATFORM: string[] =
   Object.entries(ENUM_PLATFORM)
   .reduce((a: string[], [, { label }]: any) => ([...a, label]), []) ;
 

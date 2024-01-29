@@ -1,8 +1,9 @@
 import { FC, ReactNode, Suspense } from 'react';
 
-import { Loading, Error } from 'ui/partials';
+import { Helmet, Loading, Error } from 'ui/partials';
 import { Route, Routes } from 'react-router-dom';
 import { Game } from 'modules';
+import { Container } from 'ui/layouts';
 
 export interface ROUTE {
   index?: boolean,
@@ -19,14 +20,17 @@ const routes: ROUTE[] = [
 ];
 
 const Page: FC = () => (
-  <Suspense fallback={<Loading />}>
-    <Routes>
-      {routes.map(({ index, path, element }: ROUTE) => (
-        <Route key={Math.random()} index={index} path={path} element={element()} />
-      ))}
-      <Route path={'*'} element={<Error />} />
-    </Routes>
-  </Suspense>
+  <Container>
+    <Helmet />
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        {routes.map(({ index, path, element }: ROUTE) => (
+          <Route key={Math.random()} index={index} path={path} element={element()} />
+        ))}
+        <Route path={'*'} element={<Error />} />
+      </Routes>
+    </Suspense>
+  </Container>
 )
 
 export default Page;

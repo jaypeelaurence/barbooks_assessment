@@ -1,6 +1,8 @@
 import { FC } from 'react';
 
+import cn from 'classnames';
 import { Image, NavButton } from 'ui/components/common';
+import style from 'assets/styles/style.module.scss';
 
 import { Games } from '../utils/types';
 
@@ -24,13 +26,15 @@ const GameCard: FC<PROPS> = ({ data, isLoading }) => {
   )
   
   return (
-    <div>
-      <h1>{data?.title}</h1>
+    <div className={style.gameCard}>
       <div>
-        <Image src={data?.thumbnail as string} alt={data?.title} />
+        <h1 className={cn(style.h1, style.primary)}>{data?.title}</h1>
         <div>
-          <p>{data?.shortDescription}</p>
-          <NavButton to={`/${data?.id}`} label='View More'/>
+          <Image src={data?.thumbnail as string} alt={data?.title} />
+          <div>
+            <p>{data?.shortDescription}</p>
+            <NavButton to={`/${data?.id}`} label='View More'/>
+          </div>
         </div>
       </div>
     </div>

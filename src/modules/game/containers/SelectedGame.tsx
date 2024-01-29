@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { useParams } from 'react-router-dom';
 import { useGetGame } from 'modules/game/hooks';
-import { Header } from 'ui/partials';
+import { Helmet } from 'react-helmet';
 
 import { SelectedGameCard } from '../components';
 
@@ -16,12 +16,12 @@ const SelectedGame: FC = () => {
   if (isLoading) return <SkeletonLoading />;
 
   return (
-    <>
-      <Header />
+    <div>
+      <Helmet title={data?.title} />
       {isLoading ? <SkeletonLoading /> : (
-        <SelectedGameCard data={data} isLoading={true} />
+        <SelectedGameCard data={data} isLoading={isLoading} />
       )}
-    </>
+    </div>
   );
 };
 

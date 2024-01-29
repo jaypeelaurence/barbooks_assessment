@@ -1,7 +1,9 @@
-import { FC } from 'react';
+import { FC, useCallback, useState } from 'react';
 
-import { startCase, toLower } from 'lodash';
+import { debounce, startCase, toLower } from 'lodash';
 import c from 'utils/constants';
+import style from 'assets/styles/style.module.scss';
+import { Select } from 'ui/components/forms';
 
 import { GAME_FILTER } from '../containers/GameListing';
 
@@ -12,46 +14,65 @@ interface PROPS {
 }
 
 const GameFilterForm: FC<PROPS> = ({ values, handleChange }) => {
-  const handleOnChange = (e: Record<string, any>) => handleChange(e.target.name, e.target.value)
+  const [title, setTitle] = useState(values.title);
+
+  const handleOnChange = (e: Record<string, any>) => handleChange(e.target.name, e.target.value);
+
+  const handleOnChangeSearch = useCallback((e: Record<string, any>) => {
+    setTitle(e.target.value)
+    debounce(() => handleChange(e.target.name,  e.target.value), 1000)();
+  }, [handleChange, setTitle]);
 
   return (
-    <div>
+    <div className={style.gameFilter}>
       <form>
-        <input type="text" name="title" value={values?.title} onChange={handleOnChange} />
+        <input type="text" name="title" value={title} onChange={handleOnChangeSearch} />
         <div>
-          <select name="platform" value={values.platform} onChange={handleOnChange}>
-            <option value={0}>-- select a platform --</option>
-            {c.ENUM_PLATFORM?.map(({ label, value }) => (
-              <option
-                key={`${value}-${label}`}
-                value={value}
-              >
-                {label}
-              </option>
-            ))}
-          </select>
-          <select name="category" value={values.category} onChange={handleOnChange}>
-            <option value={0}>-- select a category --</option>
-            {c.ENUM_CATEGORIES?.map((category: string) => (
-              <option
-                key={category}
-                value={category}
-              >
-                {startCase(toLower(category))}
-              </option>
-            ))}
-          </select>
-          <select name="sort-by" value={values['sort-by']} onChange={handleOnChange}>
-            <option value={0}>-- sort by --</option>
-            {c.ENUM_SORT_BY?.map((sortBy: string) => (
-              <option
-                key={sortBy}
-                value={sortBy} 
-              >
-                {startCase(toLower(sortBy))}
-              </option>
-            ))}
-          </select>
+          <div>
+            <Select
+              value={values?.platform ?? ''}
+              name="platform"
+              label="Filter by Platform"
+              options={[
+                {
+                  label: '-- select a platform --',
+                  value: 0,
+                },
+                ...c.ENUM_PLATFORM,
+              ]}
+              onChange={handleOnChange}
+            />
+            <div>
+              <label>Filter by Category:</label>
+              <select name="category" value={values.category} onChange={handleOnChange}>
+                <option value={0}>-- select a category --</option>
+                {c.ENUM_CATEGORIES?.map((category: string) => (
+                  <option
+                    key={category}
+                    value={category}
+                  >
+                    {startCase(toLower(category))}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <Select
+              value={values['sort-by'] ?? ''}
+              name="sort-by"
+              label="Sort By"
+              options={[
+                {
+                  label: '-- sort by --',
+                  value: 0,
+                },
+                ...c.ENUM_SORT_BY.map((sortBy: string) => ({
+                  label: startCase(toLower(sortBy)),
+                  value: sortBy,
+                })),
+              ]}
+              onChange={handleOnChange}
+            />
+          </div>
         </div>
       </form>
     </div>

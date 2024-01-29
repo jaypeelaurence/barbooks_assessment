@@ -1,8 +1,10 @@
 import { FC, useMemo } from 'react';
 
+import cn from 'classnames';
 import { Image, NavButton } from 'ui/components/common';
 import { lowerCase, startCase } from 'lodash';
 import { genearateRandomArray  } from 'utils/helpers';
+import style from 'assets/styles/style.module.scss';
 
 import { Game, Screenshot, SystemRequirements } from '../utils/types';
 
@@ -24,21 +26,20 @@ const SelectedGameCard: FC<PROPS> = ({ data, isLoading }) => {
 
     return minReq.map(([label, value]) => (
       <div key={label}>
-        <h3>{startCase(lowerCase(label))}</h3>
-        <p>{value}</p>
+        <h3 className={cn(style.h3)}>{startCase(lowerCase(label))}</h3>
+        <p className={cn(style.p)}>{value}</p>
       </div>
     ));
-  }, [data, isLoading])
+  }, [data, isLoading]);
   
   const screenshots = useMemo(() => {
-    if (isLoading) return genearateRandomArray(3).map((id) => {
-      return <Image key={id} alt={String(id)} src={String(id)} isLoading={true}/>
-    });
+    if (isLoading) return genearateRandomArray(3)
+      .map((id) => <Image key={id} alt={String(id)} src={String(id)} isLoading={true}/>);
 
     return data?.screenshots.map(({ id, image }: Screenshot) => (
       <Image key={id} alt={`${id}-${data?.title}`} src={image} />
     ))
-  }, [data, isLoading])
+  }, [data, isLoading]);
 
   if (isLoading) return (
     <div>
@@ -68,15 +69,15 @@ const SelectedGameCard: FC<PROPS> = ({ data, isLoading }) => {
     <div>
       <div>
         <Image src={data?.thumbnail as string} alt={data?.title} />
-        <div>
+        <div className={cn(style.background)}>
           <div>
             <div>
-              <h2>Requirements</h2>
+              <h2 className={cn(style.h2, style.primary)}>Requirements</h2>
               {requirements}
             </div>
             <div>
-              <h2>{data?.title}</h2>
-              <p>{data?.description}</p>
+              <h2 className={cn(style.h2, style.primary)}>{data?.title}</h2>
+              <p className={cn(style.p)}>{data?.description}</p>
             </div>
           </div>
           <NavButton to={'/'} label='Back'/>

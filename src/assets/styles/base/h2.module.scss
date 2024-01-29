@@ -1,0 +1,13 @@
+.h2 {
+  font-size: 20px;
+  margin: 0px;
+  padding: 0px;
+};
+
+.h2, .primary {
+  color: $primary;
+}
+
+.h2, .secondary {
+  color: $secondary;
+}
