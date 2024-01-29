@@ -11,8 +11,6 @@ export default function useGetGames(params: GAME_FILTER, options?: UseQueryOptio
   const { state } = useProvider();
   const args = state;
 
-  delete params.title;
-
   return useQuery<Games[], Error>({
     queryKey: [gc.KEYS.GAMES, params],
     queryFn: async () => {
@@ -29,6 +27,8 @@ export default function useGetGames(params: GAME_FILTER, options?: UseQueryOptio
             params.platform = _platform;
           }
         }
+
+        delete params.title;
   
         const data: Games[] | any = await api.get({
           url: tag ? 'api/filter' : 'api/games',
