@@ -39,6 +39,8 @@ you can change it in the .env file.
 
 #### FOR IMPROVEMENTS
 To improve the styling for forms especially on the select form.
+
 To improve the API backend route and architecture.
 
+To improve the unit testing for the components
 
