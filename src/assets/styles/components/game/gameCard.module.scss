@@ -105,11 +105,6 @@
       flex-direction: column;
       justify-content: space-between;
     }
-
-    .actions {
-      display: flex;
-      flex-direction: row-reverse;
-    }
     
     > div {
       * {
@@ -137,4 +132,9 @@
       margin-bottom: 0px;
     }
   }
+}
+
+.actions {
+  display: flex;
+  flex-direction: row-reverse;
 }

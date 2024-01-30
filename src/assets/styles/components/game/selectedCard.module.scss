@@ -1,0 +1,202 @@
+.selectedGameCard {
+  > div {
+    padding: 20px;
+    margin: 10px;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: $secondary-dark;
+    border-style: solid;
+    transition: 0.5s;
+    display: flex;
+
+    * {
+      margin: 0px 10px;
+    }
+    
+    *:first-child {
+      margin-left: 0px;
+    }
+
+    *:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  .gameDetails {
+    h2 {
+      font-family: "Share Tech Mono", monospace;
+      font-size: 20px;
+      color: $white;
+      letter-spacing: 10px;
+      margin-bottom: 15px;
+    }
+
+    .description {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    display: flex;
+  }
+
+  .screenshots {
+    padding: 0px;
+    margin: 10px;
+    border-width: 0px;
+    display: flex;
+  }
+
+  .content {
+    margin: 0px;
+
+    * {
+      margin: 10px 0px;
+    }
+    
+    *:first-child {
+      margin-left: 0px;
+    }
+
+    *:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  ._content {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    * {
+      margin: 10px 0px;
+    }
+    
+    *:first-child {
+      margin-left: 0px;
+    }
+
+    *:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  ._requirements {
+    width: 258px;
+
+    .specs {
+      margin: 5px 0px;
+
+      .loading {
+        width: 258px;
+        height: 13px;
+      }
+
+      * {
+        margin: 5px 0px;
+      }
+      
+      *:first-child {
+        margin-left: 0px;
+      }
+  
+      *:last-child {
+        margin-right: 0px;
+      }
+    }
+
+    .loading {
+      width: 258px;
+      height: 20px;
+    }
+
+    * {
+      margin: 10px 0px;
+    }
+    
+    *:first-child {
+      margin-left: 0px;
+    }
+
+    *:last-child {
+      margin-right: 0px;
+    }
+
+    div {
+      padding: 0px;
+      margin: 0px;
+    }
+  }
+
+  .requirements {
+    padding: 0px;
+    margin: 0px;
+
+    * {
+      margin: 10px 0px;
+    }
+    
+    *:first-child {
+      margin-left: 0px;
+    }
+
+    *:last-child {
+      margin-right: 0px;
+    }
+
+    div {
+      padding: 0px;
+      margin: 0px;
+        
+      h3 {
+        color: $white;
+        font-size: 13px;
+        line-height: 1.25;
+      }
+
+      p {
+        font-size: 13px;
+        line-height: 1.25;
+      }
+    }
+  }
+  
+  ._title {
+    width: 331px;
+    height: 23px;
+  }
+  
+  ._description {
+    padding: 0px;
+    margin-bottom: 0px;
+    
+    div {
+      width: 331px;
+      height: 12px;
+    }
+    
+    *:nth-child(1) {
+      width: 321px;
+    }
+
+    *:nth-child(2) {
+      width: 231px;
+    }
+
+    *:nth-child(3) {
+      width: 291px;
+    }
+
+    *:nth-child(4) {
+      width: 300px;
+    }
+
+    *:nth-child(5) {
+      width: 220px;
+    }
+
+    *:last-child {
+      width: 120px;
+    }
+  }
+}

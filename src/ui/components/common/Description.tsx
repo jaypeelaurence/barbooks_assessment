@@ -10,7 +10,14 @@ interface PROPS {
 }
 
 const Description: FC<PROPS> = ({ content, className }) => (
-  <div className={cn(style.description, style.p, className)}>
+  console.log(className),
+  <div
+    className={cn(
+      style.description,
+      style.p,
+      className,
+    )}
+  >
     <div>{content}</div>
   </div>
 );

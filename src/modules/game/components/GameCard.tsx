@@ -56,7 +56,10 @@ const GameCard: FC<PROPS> = ({ data, isLoading }) => {
             />
           </div>
           <div className={style.content}>
-            <Description content={data?.shortDescription ?? ''}/>
+            <Description
+              content={data?.shortDescription ?? ''}
+              className={style.ellipsis}
+            />
             <div className={style.actions}>
               <NavButton to={`/${data?.id}`} label='VIEW MORE'/>
             </div>
