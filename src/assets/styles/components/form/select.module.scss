@@ -3,17 +3,25 @@
     color: $white;
   }
 
-  select {
-    padding: 10px 15px;
-    outline: 0px;
-    border-radius: 40px;
-    border-width: 0px;
-    color: $white;
-    border-width: 1px;
-    border-color: $secondary;
-    border-style: solid;
-    background-color: transparent;
-    text-align: center;
+  ._select {
+    // padding: 10px 15px;
+    // outline: 0px;
+    // color: $white;
+    // background-color: transparent;
+    // text-align: center;
     font-family: "Share Tech Mono", monospace;
+
+    #react-select-2-placeholder {
+      color: $primary;
+    }
+
+    div {
+      margin: 0px 0px;
+      border-width: 1px;
+
+      :focus-visible {
+        border-width: 0px;
+      }
+    }
   }
 }

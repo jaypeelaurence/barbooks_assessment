@@ -16,7 +16,9 @@ export default function useGetGames(params: GAME_FILTER, options?: UseQueryOptio
     queryFn: async () => {
       const api = new Api(args);
 
-      const { tag, platform } = params;
+      const { category, platform } = params;
+
+      console.log(category);
 
       try {
         if (platform) {
@@ -28,10 +30,21 @@ export default function useGetGames(params: GAME_FILTER, options?: UseQueryOptio
           }
         }
 
-        delete params.title;
+        let cat = false;
+
+        if (category) {
+          if (category.length > 1) {
+            cat = true;
+
+            params.tag = category
+            delete params.category;
+          } else {
+            params.category = category;
+          }
+        }
   
         const data: Games[] | any = await api.get({
-          url: tag ? 'api/filter' : 'api/games',
+          url: cat ? 'api/filter' : 'api/games',
           params,
         });
 

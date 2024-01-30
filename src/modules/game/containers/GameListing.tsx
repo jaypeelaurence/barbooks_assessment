@@ -15,7 +15,7 @@ import { Games } from '../utils/types';
 
 export interface GAME_FILTER {
   platform?: PLATFORM,
-  category?: string,
+  category?: string[],
   'sort-by'?: SORT_BY,
   title?: string, 
   tag?: string[],
@@ -64,8 +64,6 @@ const GameListing: FC = () => {
     if (!value?.title) value.title = null;
     
     if (parseInt(value?.platform) === 0) value.platform = null;
-    
-    if (parseInt(value?.category) === 0) value.category = null;
     
     if (parseInt(value['sort-by']) === 0) value['sort-by'] = null;
 
