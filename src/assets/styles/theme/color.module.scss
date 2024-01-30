@@ -1,6 +1,13 @@
-$primary: #1c294f;
-$primary-light: #ebeef5;
-$secondary: #757575;
+$primary: #1a1a1c;
+$primary-light: #4e4e50;
+$primary-lighter: #939396;
+$secondary: #c3083f;
+$secondary-dark: #6f2232;
+$secondary-darker: #300919;
 
 $white: #ffffff;
 $black: #121212;
+
+.red {
+  color: $secondary,
+}

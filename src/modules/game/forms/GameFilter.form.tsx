@@ -26,7 +26,13 @@ const GameFilterForm: FC<PROPS> = ({ values, handleChange }) => {
   return (
     <div className={style.gameFilter}>
       <form>
-        <input type="text" name="title" value={title} onChange={handleOnChangeSearch} />
+        <input
+          type="text"
+          name="title"
+          placeholder="search by name..."
+          value={title}
+          onChange={handleOnChangeSearch}
+        />
         <div>
           <div>
             <Select

@@ -1,7 +1,15 @@
 input {
   padding: 10px;
   outline: 0px;
-  border-width: 1px;
-  border-radius: 5px;
-  border-color: $secondary;
+  border-radius: 40px;
+  border-width: 0px;
+  color: $white;
+  background-color: $secondary;
+  text-align: center;
+  font-family: "Share Tech Mono", monospace;
+  font-weight: bold;
+}
+
+input::placeholder {
+  color: $secondary-darker;
 }

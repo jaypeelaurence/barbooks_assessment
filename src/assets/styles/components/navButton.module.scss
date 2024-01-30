@@ -1,0 +1,21 @@
+.navButton {
+  font-size: 12px;
+  transition: 0.3s;
+  display: inline-block;
+  padding: 5px 10px;
+  outline: 0px;
+  border-radius: 40px;
+  border-width: 0px;
+  color: $white;
+  border-width: 1px;
+  border-color: $secondary;
+  border-style: solid;
+  background-color: transparent;
+  text-align: center;
+  font-family: "Share Tech Mono", monospace;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $secondary;
+  }
+}

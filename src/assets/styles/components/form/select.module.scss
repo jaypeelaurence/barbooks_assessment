@@ -1,0 +1,19 @@
+.select {
+  label {
+    color: $white;
+  }
+
+  select {
+    padding: 10px 15px;
+    outline: 0px;
+    border-radius: 40px;
+    border-width: 0px;
+    color: $white;
+    border-width: 1px;
+    border-color: $secondary;
+    border-style: solid;
+    background-color: transparent;
+    text-align: center;
+    font-family: "Share Tech Mono", monospace;
+  }
+}

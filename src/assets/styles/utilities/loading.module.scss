@@ -1,0 +1,16 @@
+@keyframes pulse {
+  0%, 100% {
+    background-color: $primary-light;
+    opacity: 0.2;
+  }
+
+  50% {
+    background-color: $primary-light;
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  background-color: $primary-light;
+  animation: pulse 3s infinite;
+}

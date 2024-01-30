@@ -1,4 +1,5 @@
 import Image from './Image';
 import NavButton from './NavButton';
+import Description from './Description';
 
-export { Image, NavButton };
+export { Description, Image, NavButton };

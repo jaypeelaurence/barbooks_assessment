@@ -1,5 +1,51 @@
 .container {
+  display: relative;
   width: 1200px;
   padding: 10px;
   margin: 0 auto;
+
+  .palette {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 99999;
+ 
+    > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      width: 150px;
+      height: 16.66%;
+      font-weight: 300;
+      color: rgba(255,255,255, 0.2)
+    }
+
+    *:nth-child(1) {
+      background-color: $primary;
+    }
+
+    *:nth-child(2) {
+      background-color: $primary-light;
+    }
+
+    *:nth-child(3) {
+      background-color: $primary-lighter;
+      color: $primary-light;
+    }
+
+    *:nth-child(4) {
+      background-color: $secondary-darker;
+    }
+
+    *:nth-child(5) {
+      background-color: $secondary-dark;
+    }
+
+    *:nth-child(6) {
+      background-color: $secondary;
+      color: $secondary-dark
+    }
+  }
 }

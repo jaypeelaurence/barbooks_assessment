@@ -1,0 +1,41 @@
+.error {
+  width: 100%;
+  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: $secondary-dark;
+  border-style: solid;
+
+  div {
+    text-align: center;
+    font-family: "Share Tech Mono", monospace;
+
+    h1 {
+      font-size: 40px;
+      color: $primary-light;
+      color: $white;
+    }
+
+    h2 {
+      font-size: 15px;
+      color: $primary-lighter;
+      letter-spacing: 10px;
+    }
+
+    * {
+      margin: 5px 0px;
+    }
+  
+    *:first-child {
+      margin-top: 0px;
+    }
+  
+    *:last-child {
+      margin-bottom: 0px;
+    }
+  }
+}

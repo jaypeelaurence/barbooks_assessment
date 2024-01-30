@@ -1,0 +1,36 @@
+.notFound {
+  width: 100%;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    text-align: center;
+    font-family: "Share Tech Mono", monospace;
+
+    svg {
+      color: $white;
+      font-size: 80px;
+    }
+
+    h2 {
+      font-size: 15px;
+      color: $primary-lighter;
+      letter-spacing: 10px;
+    }
+
+    * {
+      margin: 5px 0px;
+    }
+  
+    *:first-child {
+      margin-top: 0px;
+    }
+  
+    *:last-child {
+      margin-bottom: 0px;
+    }
+  }
+}

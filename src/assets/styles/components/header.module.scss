@@ -1,9 +1,20 @@
 .header {
   padding: 20px;
   text-align: center;
+  font-family: "Share Tech Mono", monospace;
+  
+  h1 {
+    font-size: 40px;
+  }
+  
+  h2 {
+    font-size: 15px;
+    color: $primary-lighter;
+    letter-spacing: 10px;
+  }
 
   * {
-    padding: 15px 0px;
+    padding: 0px 0px;
   }
 
   *:first-child {

@@ -8,6 +8,7 @@ import { GameFilterForm } from 'modules/game/forms';
 import { removeEmpty } from 'utils/helpers';
 import { useFilterContext } from 'modules/game/utils/providers/Filter';
 import style from 'assets/styles/style.module.scss';
+import { NotFound } from 'ui/partials';
 
 import { GameCard } from '../components';
 import { Games } from '../utils/types';
@@ -24,6 +25,7 @@ const INIT_FILTERS: GAME_FILTER = {};
 
 const SkeletonLoading: FC = () => (
   <div className={style.gameListing}>
+    <GameCard isLoading={true} />
     <GameCard isLoading={true} />
     <GameCard isLoading={true} />
     <GameCard isLoading={true} />
@@ -70,7 +72,15 @@ const GameListing: FC = () => {
     setQuery(removeEmpty({ ...query, ...value }));
   }, [query, setQuery]);
 
-  console.log(state, query);
+  const listing = useMemo(() => {
+    if (isLoading) return <SkeletonLoading />;
+
+    if (!games.length) return <NotFound />
+
+    return games?.map((game) => (
+      <GameCard key={game?.id} data={game} isLoading={isLoading} />
+    ));
+  }, [isLoading, games]);
 
   return (
     <div>
@@ -80,9 +90,7 @@ const GameListing: FC = () => {
         )}
       </FilterForm>
       <div className={style.gameListing}>   
-        {isLoading ? <SkeletonLoading /> : (games?.map((game) => (
-          <GameCard key={game?.id} data={game} isLoading={isLoading} />
-        )))}
+        {listing}
       </div>
     </div>
   );
